@@ -4,7 +4,11 @@
     function showChat() {
         // If the chat panel is currently expanded, close it, otherwise 
         // expand it. Aldo swap out the background image of the toggle button.
-        $('.chat_window').animate({'height': '252px', 'width': '537px'});
+        {% if not admin_active %}                                              
+        $('.chat_window').animate({'height': '282px', 'width': '537px'});         
+        {% else %}                                                             
+        $('.chat_window').animate({'height': '252px', 'width': '537px'});         
+        {% endif %}                                                            
         $('#hide_live_support, #show_live_support, .live_support').toggle();
     }
     function hideChat() {

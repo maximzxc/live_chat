@@ -110,9 +110,17 @@ function gotMessages(resp) {
     // Remove all of the existing Pending Chats and add only the ones
     // received in the response from the server.
     $('.pending_chats ul').children().remove();
+    var mess = [];
     for (var index in resp.pending_chats) {
         var chat = resp.pending_chats[index];
         $('.pending_chats ul').append('<li><a class="' + chat.active  + '" href="' + chat.url + '">' + chat.name + '</a></li>');
+        if ($.inArray(chat.name, mess) == -1) {
+            var audio = new Audio('https://psv4.vk.me/c1258/u4708538/audios/c5bfd4f56597.mp3');
+            audio.play();
+            mess.push(chat.url);
+            sleep(3000);
+            audio.pause();
+        }
     }
 
     // Scroll all of the chat sessions to the bottom of the message list.
@@ -173,7 +181,7 @@ function messageSent(response, code) {
 // Scroll all of the active chat sessions message lists to the bottom.
 function scrollAll() {
     $('.message_list ul').each(function(index, control) {
-        $(control).scrollTop(control.scrollHeight - $(control).height());
+        $(control).scrollTop($(control).attr('scrollHeight') - $(control).height());
     });
 }
 

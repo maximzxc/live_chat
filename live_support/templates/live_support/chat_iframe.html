@@ -1,4 +1,3 @@
-{% load url from future %}
 {% load i18n %}
 <script type="text/javascript">
     // Toggle the chat panel in and out. 
@@ -64,13 +63,16 @@
 <div id="live_support_chat" class="chat_window active">
     <div id="show_live_support" onClick="showChat()">
         {% if admin_active %}
-        {% trans 'Chat Now' %} 
+        {% trans 'Chat Online Now' %} 
         {% else %}
         {% trans 'Leave a Message' %} 
         {% endif %}
     </div>
-    <div id="hide_live_support" onClick="hideChat()">
-        {% trans 'Welcome to Django Live Support' %}
+    <div style="text-align: center;"id="hide_live_support" onClick="hideChat()">
+      {% trans 'Welcome to 7webpages support' %}
+      {% if not admin_active %}
+      <p>Please leave your message and e-mail to connect with you</p>
+      {% endif %}
     </div>
     <iframe class="live_support" src="{{ url }}">
     </iframe>

@@ -37,8 +37,17 @@
     background: #fff;
     overflow: hidden;
     border: thin solid black;
-    height: 26px;
+    height: 36px;
     width: 200px;
+    border-top-left-radius:33px;
+    border-top-right-radius:33px;
+    border-bottom-left-radius:33px;
+    border-bottom-right-radius:33px;
+}
+
+.chat_window::selection {
+    color: white;
+    background: grey;
 }
 
 .chat_window .live_support {
@@ -51,8 +60,11 @@
 
 .chat_window #show_live_support {
     cursor: pointer;
-    background: #F2F2F2;
+    background: #F8C05D;
     padding: 3px;
+    height: 36px;
+    width: 200px;
+    font-size: 150%;
 }
 
 .chat_window #hide_live_support {
@@ -65,14 +77,14 @@
 </style>
 
 <div id="live_support_chat" class="chat_window active">
-    <div id="show_live_support" onClick="showChat()">
+    <div style="text-align: center;" id="show_live_support" onClick="showChat()">
         {% if admin_active %}
         {% trans 'Chat Online Now' %} 
         {% else %}
         {% trans 'Leave a Message' %} 
         {% endif %}
     </div>
-    <div style="text-align: center;"id="hide_live_support" onClick="hideChat()">
+    <div style="text-align: center;" id="hide_live_support" onClick="hideChat()">
       {% trans 'Welcome to 7webpages support' %}
       {% if not admin_active %}
       <p>Please leave your message and e-mail to connect with you</p>

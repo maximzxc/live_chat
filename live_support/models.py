@@ -7,7 +7,7 @@ from django.core.cache import cache
 
 
 class SupportGroup(models.Model):
-    name = models.CharField(_("name"), max_length=255)
+    name = models.CharField(("Name"), max_length=255)
     agents = models.ManyToManyField(
         User, blank=True, related_name='agent_support_groups'
     )
@@ -29,7 +29,7 @@ class ChatManager(models.Manager):
 
 
 class Chat(models.Model):
-    name = models.CharField(_("name"), max_length=255)
+    name = models.CharField(("Name"), max_length=255)
     hash_key = models.CharField(unique=True, max_length=64, null=True,
                                 editable=False, blank=True, default=uuid4)
     details = models.TextField(_("question"), blank=True)
